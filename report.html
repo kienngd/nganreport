@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Excel Report</title>
+        <meta charset="UTF-8">
+        <style type="text/css">
+            body
+            {
+                font-family: Arial;
+                font-size: 10pt;
+            }
+            table
+            {
+                border: 1px solid #ccc;
+                border-collapse: collapse;
+            }
+            table th
+            {
+                background-color: #F7F7F7;
+                color: #333;
+                font-weight: bold;
+            }
+            table th, table td
+            {
+                padding: 5px;
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="file" id="fileUpload" />
+        <input type="button" id="btnProcess" value="Process" onclick="ProcessData()" />
+        <span id="divMessage" style="margin-left: 20px;">zzz</span>
+        <hr />
+        <div style="margin: 10px;">
+            Hướng dẫn sử dụng nhanh:<br/>
+            - Chọn file cần xử lý, sau đó bấm nút "Process" chờ phần mềm xử lý rồi lưu file mới<br/><br/>
+            Cấu trúc file excel:<br/>
+            - Phải đúng là loại file xlsx.<br/>
+            - Tránh trường hợp format không đúng định dạng dấu chấm, dấu phẩy <b>bỏ tất cả format dạng số</b>.<br/>
+            - Sheet đầu tiên phải là dữ liệu kế hoạch.<br/>
+            - <b>Dòng tiêu đề phải chính xác là: ngày xuất hàng, mã thành phẩm, số lượng</b><br/>
+            - Sheet thứ hai là dữ liệu boomlist<br/>
+            - <b>Dòng tiêu đề phải chính xác là: mã thành phẩm, mã linh kiện, số lượng</b><br/>
+            - Nếu mã thành phẩm - mã linh kiện bị trùng thì phần mềm sẽ lấy số cuối cùng để sử dụng<br/><br/>
+            - Ngoài 2 sheet trên không nên có những sheet dư thừa khác.<br/>
+            - Phần mềm sẽ tự động sinh ra 2 sheet mới là report1 và report2<br/>                                    
+        </div>
+        
+        <script type="text/javascript" src="js/xlsx.full.min.js"></script>
+        <script type="text/javascript" src="js/jszip.js"></script>
+        <script type="text/javascript" src="js/report.js?v=1.0.0"></script>
+    </body>
+</html>
