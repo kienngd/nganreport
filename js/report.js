@@ -132,8 +132,11 @@ function processProductionData(productionData) {
     var nCount = productionData.length;
     for (var i = 0; i < nCount; i++) {
         let tmpNgayXuat = ("ngày xuất hàng" in productionData[i]) ? productionData[i]["ngày xuất hàng"] : '-';
+        tmpNgayXuat = tmpNgayXuat.trim();
         let tmpMaThanhPham = ("mã thành phẩm" in productionData[i]) ? productionData[i]["mã thành phẩm"] : '-';
-        let tmpSoLuong = ("số lượng" in productionData[i]) ? productionData[i]["số lượng"] : 0;
+        tmpMaThanhPham = tmpMaThanhPham.trim();
+        let tmpSoLuong = ("số lượng" in productionData[i]) ? productionData[i]["số lượng"] : "0";
+        tmpSoLuong = tmpSoLuong.trim();
         let tmpKey = '' + tmpNgayXuat + '@' + tmpMaThanhPham;
         let tmpObj = new Object();
         if( retData.has(tmpKey)) {
@@ -164,8 +167,11 @@ function preProcessMaterialData(boomList) {
     let nAlert = 5;
     for (var i = 0; i < nCount; i++) {
         let tmpMaThanhPham = ("mã thành phẩm" in boomList[i]) ? boomList[i]["mã thành phẩm"] : "-";
+        tmpMaThanhPham = tmpMaThanhPham.trim();
         let tmpMaLinhKien = ("mã linh kiện" in boomList[i]) ? boomList[i]["mã linh kiện"] : "-";
-        let tmpSoLuong = ("số lượng" in boomList[i]) ? boomList[i]["số lượng"] : 0;
+        tmpMaLinhKien = tmpMaLinhKien.trim();
+        let tmpSoLuong = ("số lượng" in boomList[i]) ? boomList[i]["số lượng"] : "0";
+        tmpSoLuong = tmpSoLuong.trim();
         tmpSoLuong = parseFloat(tmpSoLuong);
         // Check data is duplicate
         if( retData.has(tmpMaThanhPham) && retData.get(tmpMaThanhPham).has(tmpMaLinhKien) && (nAlert > 0)) {
